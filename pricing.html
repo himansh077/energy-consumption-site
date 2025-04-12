@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerTrack - Pricing</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #e74c3c;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: var(--shadow);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .login-btn {
+            background: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: var(--radius);
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .pricing-hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 5%;
+            text-align: center;
+        }
+        
+        .pricing-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Pricing Plans */
+        .pricing-container {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .plan-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .primary-btn {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .primary-btn:hover {
+            background: #2980b9;
+        }
+        
+        .secondary-btn {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .secondary-btn:hover {
+            background: #f0f7fc;
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .comparison-table th, 
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .feature-name {
+            font-weight: 600;
+        }
+        
+        .check-mark {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin: 60px 0;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .faq-answer p {
+            padding-bottom: 20px;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 60px 5%;
+            margin-top: 40px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 5% 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="energy logo.jpg" alt="PowerTrack Logo" class="logo">
+            <span class="brand-name">PowerTrack</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="pricing.html" class="active">Pricing</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pricing-hero">
+        <h1>Simple, Transparent Pricing</h1>
+        <p>Choose the perfect plan for your home or business. Start saving on your energy bills today.</p>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="pricing-container">
+        <h2 class="section-title">Our Pricing Plans</h2>
+        
+        <div class="pricing-grid">
+            <!-- Basic Plan -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Basic</h3>
+                <div class="plan-price">$9<span>/month</span></div>
+                <ul class="plan-features">
+                    <li>Real-time energy monitoring</li>
+                    <li>Basic usage analytics</li>
+                    <li>Email alerts</li>
+                    <li>Mobile app access</li>
+                    <li>1 year data history</li>
+                </ul>
+                <a href="#" class="plan-btn secondary-btn">Get Started</a>
+            </div>
+            
+            <!-- Pro Plan (Popular) -->
+            <div class="pricing-card">
+                <div class="popular-badge">Most Popular</div>
+                <h3 class="plan-name">Pro</h3>
+                <div class="plan-price">$19<span>/month</span></div>
+                <ul class="plan-features">
+                    <li>All Basic features</li>
+                    <li>Advanced analytics</li>
+                    <li>Smart alerts (SMS & push)</li>
+                    <li>AI recommendations</li>
+                    <li>Device-specific tracking</li>
+                    <li>3 year data history</li>
+                </ul>
+                <a href="#" class="plan-btn primary-btn">Get Started</a>
+            </div>
+            
+            <!-- Business Plan -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Business</h3>
+                <div class="plan-price">$49<span>/month</span></div>
+                <ul class="plan-features">
+                    <li>All Pro features</li>
+                    <li>Multi-location support</li>
+                    <li>Team accounts</li>
+                    <li>Custom reporting</li>
+                    <li>API access</li>
+                    <li>Priority support</li>
+                    <li>Unlimited data history</li>
+                </ul>
+                <a href="#" class="plan-btn secondary-btn">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>PowerTrack</h3>
+                <p>Smart energy monitoring solutions for homes and businesses.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Energy St, Power City</li>
+                    <li><i class="fas fa-phone"></i> (800) 555-ENERGY</li>
+                    <li><i class="fas fa-envelope"></i> support@powertrack.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 PowerTrack. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

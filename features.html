@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerTrack - Features</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #e74c3c;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: var(--shadow);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .login-btn {
+            background: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: var(--radius);
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .features-hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 5%;
+            text-align: center;
+        }
+        
+        .features-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .features-hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Features Grid */
+        .features-container {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Feature Highlight */
+        .feature-highlight {
+            display: flex;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin: 60px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .highlight-content {
+            flex: 1;
+            padding: 40px;
+        }
+        
+        .highlight-content h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .highlight-image {
+            flex: 1;
+        }
+        
+        .highlight-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 60px 5%;
+            margin-top: 40px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 5% 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .feature-highlight {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+
+        .ai-assistant {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #54a4da;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .ai-assistant:hover {
+            background-color: #2980b9;
+            transform: scale(1.1);
+        }
+
+        .ai-assistant i {
+            font-size: 24px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="ai-assistant" id="aiButton">
+        <a href="index.html" style="color: rgb(225, 215, 215);"><i class="fas fa-robot"></i></a>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="energy logo.jpg" alt="PowerTrack Logo" class="logo">
+            <span class="brand-name">PowerTrack</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="features.html" class="active">Features</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="features-hero">
+        <h1>Powerful Energy Management Features</h1>
+        <p>Discover how PowerTrack helps you monitor, analyze, and optimize your electricity consumption with our comprehensive feature set.</p>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="features-container">
+        <h2 class="section-title">Core Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Real-time Monitoring</h3>
+                <p>Track your electricity usage with minute-by-minute updates through our intuitive dashboard.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3>Usage Analytics</h3>
+                <p>Detailed breakdowns of your consumption patterns by device, time of day, and cost.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <h3>Smart Alerts</h3>
+                <p>Get notified when usage exceeds thresholds or when energy rates change.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <h3>Cost Tracking</h3>
+                <p>See exactly how much each appliance costs to run and identify savings opportunities.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile Access</h3>
+                <p>Full control and monitoring from our iOS and Android apps.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3>Historical Data</h3>
+                <p>Compare current usage with past months and years to track your progress.</p>
+            </div>
+        </div>
+
+        <!-- Feature Highlight 1 -->
+        <div class="feature-highlight">
+            <div class="highlight-content">
+                <h2>AI-Powered Recommendations</h2>
+                <p>Our intelligent system analyzes your usage patterns and provides personalized recommendations to reduce consumption and save money. The more you use PowerTrack, the smarter it gets at identifying savings opportunities specific to your home.</p>
+                <ul style="margin-top: 15px; margin-left: 20px;">
+                    <li>Optimal appliance scheduling</li>
+                    <li>Peak hour avoidance</li>
+                    <li>Equipment upgrade suggestions</li>
+                    <li>Behavioral recommendations</li>
+                </ul>
+            </div>
+            <div class="highlight-image">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="AI Analysis">
+            </div>
+        </div>
+
+        <!-- Feature Highlight 2 -->
+        <div class="feature-highlight">
+            <div class="highlight-image">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Energy Reports">
+            </div>
+            <div class="highlight-content">
+                <h2>Comprehensive Reporting</h2>
+                <p>Generate detailed reports for any time period with visualizations that make your energy data easy to understand. Export reports as PDF or CSV for sharing with family members or energy consultants.</p>
+                <p style="margin-top: 15px;">Key report types include:</p>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li>Monthly consumption trends</li>
+                    <li>Appliance-specific usage</li>
+                    <li>Cost projections</li>
+                    <li>Savings achievement</li>
+                    <li>Carbon footprint analysis</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>PowerTrack</h3>
+                <p>Smart energy monitoring solutions for homes and businesses.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Energy St, Power City</li>
+                    <li><i class="fas fa-phone"></i> (800) 555-ENERGY</li>
+                    <li><i class="fas fa-envelope"></i> support@powertrack.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 PowerTrack. All rights reserved.
+        </div>
+        
+    </footer>
+</body>
+</html>
